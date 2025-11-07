@@ -1,0 +1,13 @@
+{
+  "name": "Prescrição Teste - Amoxicilina 500mg",
+  "description": "Tratamento de infecção bacteriana. Uso oral por 7 dias.",
+  "doctor": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "patient": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+  "medication": {
+    "name": "Amoxicilina 500mg",
+    "dosage": "1 cápsula a cada 8h por 7 dias",
+    "instructions": "Tomar com água após as refeições"
+  },
+  "issued_at": "2025-11-07",
+  "valid_until": "2025-12-07"
+}

@@ -1,0 +1,25 @@
+✅ Owner (admin) pode:
+
+Autorizar ou revogar farmacêuticas.
+
+Monitorar toda a cadeia.
+
+✅ Farmacêuticas autorizadas podem:
+
+Cadastrar novos medicamentos (com validade, lote, etc.).
+
+Enviar para distribuidores.
+
+✅ Distribuidores podem:
+
+Transferir medicamentos para farmácias.
+
+✅ Farmácias podem:
+
+Marcar medicamentos como vendidos.
+
+✅ Todos podem consultar:
+
+Dados detalhados de cada medicamento.
+
+Estoque de cada fabricante.
