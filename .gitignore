@@ -21,3 +21,8 @@ node_modules
 
 # cli
 dist
+
+# Environment files (keep .example files only)
+.env.zama
+.env.local
+.env.*.local
