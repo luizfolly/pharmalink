@@ -6,8 +6,909 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
+    PharmaLinkDataValidator: {
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "router",
+              type: "address",
+            },
+            {
+              internalType: "uint64",
+              name: "subscriptionId",
+              type: "uint64",
+            },
+            {
+              internalType: "uint32",
+              name: "gasLimit",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "donId",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "_prescriptionContract",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_supplyChainContract",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "subscriptionId",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "gasLimit",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "donId",
+              type: "bytes32",
+            },
+          ],
+          name: "ConfigUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "string",
+              name: "contractType",
+              type: "string",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newAddress",
+              type: "address",
+            },
+          ],
+          name: "ContractAddressUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "errorMessage",
+              type: "string",
+            },
+          ],
+          name: "RequestFailed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "response",
+              type: "bytes",
+            },
+          ],
+          name: "RequestFulfilled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "requester",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "sourceCode",
+              type: "string",
+            },
+          ],
+          name: "RequestSent",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkDataValidator.ValidationType",
+              name: "validationType",
+              type: "uint8",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "validationData",
+              type: "string",
+            },
+          ],
+          name: "ValidationCompleted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkDataValidator.ValidationType",
+              name: "validationType",
+              type: "uint8",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "targetContract",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+          ],
+          name: "ValidationRequested",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "functionConfig",
+          outputs: [
+            {
+              internalType: "string",
+              name: "sourceCode",
+              type: "string",
+            },
+            {
+              internalType: "uint64",
+              name: "subscriptionId",
+              type: "uint64",
+            },
+            {
+              internalType: "uint32",
+              name: "gasLimit",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "donId",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getFunctionConfig",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "sourceCode",
+                  type: "string",
+                },
+                {
+                  internalType: "uint64",
+                  name: "subscriptionId",
+                  type: "uint64",
+                },
+                {
+                  internalType: "uint32",
+                  name: "gasLimit",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "donId",
+                  type: "bytes32",
+                },
+              ],
+              internalType: "struct ChainlinkFunctionsConsumer.FunctionConfig",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+          ],
+          name: "getRequestDetails",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "requestId",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "address",
+                  name: "requester",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "enum ChainlinkFunctionsConsumer.RequestStatus",
+                  name: "status",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes",
+                  name: "response",
+                  type: "bytes",
+                },
+                {
+                  internalType: "string",
+                  name: "errorMessage",
+                  type: "string",
+                },
+              ],
+              internalType: "struct ChainlinkFunctionsConsumer.FunctionRequest",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+          ],
+          name: "getRequestResponse",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+          ],
+          name: "getRequestStatus",
+          outputs: [
+            {
+              internalType: "enum ChainlinkFunctionsConsumer.RequestStatus",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+          ],
+          name: "getUserRequests",
+          outputs: [
+            {
+              internalType: "bytes32[]",
+              name: "",
+              type: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getValidationCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+          ],
+          name: "getValidationRequest",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "requestId",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "address",
+                  name: "requester",
+                  type: "address",
+                },
+                {
+                  internalType: "enum PharmaLinkDataValidator.ValidationType",
+                  name: "validationType",
+                  type: "uint8",
+                },
+                {
+                  internalType: "address",
+                  name: "targetContract",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "targetId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "isValid",
+                  type: "bool",
+                },
+                {
+                  internalType: "string",
+                  name: "validationData",
+                  type: "string",
+                },
+              ],
+              internalType: "struct PharmaLinkDataValidator.ValidationRequest",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "targetContract",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+          ],
+          name: "getValidationResult",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bool",
+                  name: "isApproved",
+                  type: "bool",
+                },
+                {
+                  internalType: "string",
+                  name: "reason",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct PharmaLinkDataValidator.ValidationResult",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "prescriptionContract",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "requestCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "requests",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "requester",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "enum ChainlinkFunctionsConsumer.RequestStatus",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "bytes",
+              name: "response",
+              type: "bytes",
+            },
+            {
+              internalType: "string",
+              name: "errorMessage",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newAddress",
+              type: "address",
+            },
+          ],
+          name: "setPrescriptionContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newAddress",
+              type: "address",
+            },
+          ],
+          name: "setSupplyChainContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "supplyChainContract",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "subscriptionId",
+              type: "uint64",
+            },
+            {
+              internalType: "uint32",
+              name: "gasLimit",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "donId",
+              type: "bytes32",
+            },
+            {
+              internalType: "string",
+              name: "sourceCode",
+              type: "string",
+            },
+          ],
+          name: "updateFunctionConfig",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userRequests",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "batchNumber",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "expirationDate",
+              type: "uint256",
+            },
+          ],
+          name: "validateBatchExpiration",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "doctorAddress",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "licenseNumber",
+              type: "string",
+            },
+          ],
+          name: "validateDoctorCredentials",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "batchNumber",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "manufacturerAddress",
+              type: "address",
+            },
+          ],
+          name: "validateMedicineAuthenticity",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "prescriptionId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "doctorAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "patientAddress",
+              type: "address",
+            },
+          ],
+          name: "validatePrescription",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "int256",
+              name: "minTemp",
+              type: "int256",
+            },
+            {
+              internalType: "int256",
+              name: "maxTemp",
+              type: "int256",
+            },
+          ],
+          name: "validateTemperatureCompliance",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "validationCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "validationRequests",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "requester",
+              type: "address",
+            },
+            {
+              internalType: "enum PharmaLinkDataValidator.ValidationType",
+              name: "validationType",
+              type: "uint8",
+            },
+            {
+              internalType: "address",
+              name: "targetContract",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "validationData",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "validationResults",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "isApproved",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "reason",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        functionConfig: "contracts/ChainlinkFunctionsConsumer.sol",
+        getFunctionConfig: "contracts/ChainlinkFunctionsConsumer.sol",
+        getRequestDetails: "contracts/ChainlinkFunctionsConsumer.sol",
+        getRequestResponse: "contracts/ChainlinkFunctionsConsumer.sol",
+        getRequestStatus: "contracts/ChainlinkFunctionsConsumer.sol",
+        getUserRequests: "contracts/ChainlinkFunctionsConsumer.sol",
+        requestCounter: "contracts/ChainlinkFunctionsConsumer.sol",
+        requests: "contracts/ChainlinkFunctionsConsumer.sol",
+        updateFunctionConfig: "contracts/ChainlinkFunctionsConsumer.sol",
+        userRequests: "contracts/ChainlinkFunctionsConsumer.sol",
+      },
+      deployedOnBlock: 7,
+    },
     PharmaLinkPrescription: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           inputs: [],
@@ -608,26 +1509,1155 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        approve: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        balanceOf: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        getApproved: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        isApprovedForAll: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        approve:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        balanceOf:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        getApproved:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        isApprovedForAll:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
         name: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        ownerOf: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        safeTransferFrom: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        setApprovalForAll: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        supportsInterface: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        symbol: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        tokenURI: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        transferFrom: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        ownerOf:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        safeTransferFrom:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        setApprovalForAll:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        supportsInterface:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        symbol:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        tokenURI:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        transferFrom:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
         owner: "@openzeppelin/contracts/access/Ownable.sol",
         renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
         transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
       },
-      deployedOnBlock: 1,
+      deployedOnBlock: 3,
+    },
+    PharmaLinkPrescriptionV2: {
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_toTokenId",
+              type: "uint256",
+            },
+          ],
+          name: "BatchMetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "authorized",
+              type: "bool",
+            },
+          ],
+          name: "DoctorAuthorized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkPrescriptionV2.ValidationStatus",
+              name: "newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "DoctorCredentialsValidationUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "licenseNumber",
+              type: "string",
+            },
+          ],
+          name: "DoctorProfileCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "MetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+          ],
+          name: "PrescriptionBurned",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "patient",
+              type: "address",
+            },
+          ],
+          name: "PrescriptionCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "targetType",
+              type: "string",
+            },
+          ],
+          name: "ValidationRequested",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "targetType",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkPrescriptionV2.ValidationStatus",
+              name: "newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "ValidationStatusUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newValidator",
+              type: "address",
+            },
+          ],
+          name: "ValidatorContractUpdated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "status",
+              type: "bool",
+            },
+          ],
+          name: "authorizeDoctor",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "authorizedDoctors",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "prescriptionId",
+              type: "uint256",
+            },
+          ],
+          name: "burnPrescription",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "patient",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "tokenURI",
+              type: "string",
+            },
+          ],
+          name: "createPrescription",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "doctorProfiles",
+          outputs: [
+            {
+              internalType: "address",
+              name: "doctorAddress",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "licenseNumber",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "isAuthorized",
+              type: "bool",
+            },
+            {
+              internalType: "enum PharmaLinkPrescriptionV2.ValidationStatus",
+              name: "credentialsStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "bytes32",
+              name: "credentialsValidationRequestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "authorizedAt",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+          ],
+          name: "getDoctorProfile",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "doctorAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "licenseNumber",
+                  type: "string",
+                },
+                {
+                  internalType: "bool",
+                  name: "isAuthorized",
+                  type: "bool",
+                },
+                {
+                  internalType:
+                    "enum PharmaLinkPrescriptionV2.ValidationStatus",
+                  name: "credentialsStatus",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "credentialsValidationRequestId",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint256",
+                  name: "authorizedAt",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct PharmaLinkPrescriptionV2.DoctorProfile",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "prescriptionId",
+              type: "uint256",
+            },
+          ],
+          name: "getPrescription",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "doctor",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "patient",
+                  type: "address",
+                },
+                {
+                  internalType: "bool",
+                  name: "isValid",
+                  type: "bool",
+                },
+                {
+                  internalType: "string",
+                  name: "metadataURI",
+                  type: "string",
+                },
+                {
+                  internalType:
+                    "enum PharmaLinkPrescriptionV2.ValidationStatus",
+                  name: "validationStatus",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "validationRequestId",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint256",
+                  name: "createdAt",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct PharmaLinkPrescriptionV2.Prescription",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getPrescriptionCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getValidationConfig",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "validatorContract",
+                  type: "address",
+                },
+                {
+                  internalType: "bool",
+                  name: "requirePrescriptionValidation",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "requireDoctorCredentialsValidation",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct PharmaLinkPrescriptionV2.ValidationConfig",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+          ],
+          name: "isDoctorAuthorized",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+          ],
+          name: "onDoctorCredentialsValidationResult",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "prescriptionId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+          ],
+          name: "onPrescriptionValidationResult",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "prescriptionCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "prescriptions",
+          outputs: [
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "patient",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "metadataURI",
+              type: "string",
+            },
+            {
+              internalType: "enum PharmaLinkPrescriptionV2.ValidationStatus",
+              name: "validationStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "bytes32",
+              name: "validationRequestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "createdAt",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "doctor",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "licenseNumber",
+              type: "string",
+            },
+          ],
+          name: "registerDoctorProfile",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bool",
+              name: "requirePrescription",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireDoctorCredentials",
+              type: "bool",
+            },
+          ],
+          name: "setValidationRequirements",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "validatorAddress",
+              type: "address",
+            },
+          ],
+          name: "setValidatorContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "validationConfig",
+          outputs: [
+            {
+              internalType: "address",
+              name: "validatorContract",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "requirePrescriptionValidation",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireDoctorCredentialsValidation",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "validationRequestToDoctorAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "validationRequestToPrescriptionId",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        approve:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        balanceOf:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        getApproved:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        isApprovedForAll:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        name: "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        ownerOf:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        safeTransferFrom:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        setApprovalForAll:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        supportsInterface:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        symbol:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        tokenURI:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        transferFrom:
+          "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        owner: "@openzeppelin/contracts/access/Ownable.sol",
+        renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+        transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+      },
+      deployedOnBlock: 9,
     },
     PharmaLinkSupplyChain: {
-      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           inputs: [],
@@ -1643,7 +3673,1312 @@ const deployedContracts = {
         renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
         transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
       },
-      deployedOnBlock: 13,
+      deployedOnBlock: 5,
+    },
+    PharmaLinkSupplyChainV2: {
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "role",
+              type: "string",
+            },
+          ],
+          name: "AuthorizationRevoked",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+          ],
+          name: "DistributorAuthorized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "batch",
+              type: "string",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "manufacturer",
+              type: "address",
+            },
+          ],
+          name: "MedicineCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkSupplyChainV2.Status",
+              name: "newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "MedicineTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "requester",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "supplier",
+              type: "address",
+            },
+          ],
+          name: "OrderCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkSupplyChainV2.OrderStatus",
+              name: "status",
+              type: "uint8",
+            },
+          ],
+          name: "OrderUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "pharma",
+              type: "address",
+            },
+          ],
+          name: "PharmaceuticalAuthorized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "pharmacy",
+              type: "address",
+            },
+          ],
+          name: "PharmacyAuthorized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "location",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "temperature",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "humidity",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "remarks",
+              type: "string",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "recordedBy",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          name: "TrackingEventAdded",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "targetType",
+              type: "string",
+            },
+          ],
+          name: "ValidationRequested",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "targetId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "targetType",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "enum PharmaLinkSupplyChainV2.ValidationStatus",
+              name: "newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "ValidationStatusUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newValidator",
+              type: "address",
+            },
+          ],
+          name: "ValidatorContractUpdated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "location",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "temperature",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "humidity",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "remarks",
+              type: "string",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.Status",
+              name: "status",
+              type: "uint8",
+            },
+          ],
+          name: "addTrackingEvent",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+          ],
+          name: "authorizeDistributor",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "pharma",
+              type: "address",
+            },
+          ],
+          name: "authorizePharmaceutical",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "pharmacy",
+              type: "address",
+            },
+          ],
+          name: "authorizePharmacy",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "authorizedDistributors",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "authorizedPharmaceuticals",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "authorizedPharmacies",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "quantity",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "manufacturer",
+              type: "address",
+            },
+          ],
+          name: "createDistributorOrder",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "batchNumber",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "metadataURI",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "producerName",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "expirationDate",
+              type: "uint256",
+            },
+          ],
+          name: "createMedicine",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "quantity",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+          ],
+          name: "createPharmacyOrder",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "distributorOrders",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+          ],
+          name: "getMedicine",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "batchNumber",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "metadataURI",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "producerName",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "expirationDate",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "manufacturer",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "distributor",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "pharmacy",
+                  type: "address",
+                },
+                {
+                  internalType: "enum PharmaLinkSupplyChainV2.Status",
+                  name: "status",
+                  type: "uint8",
+                },
+                {
+                  internalType: "enum PharmaLinkSupplyChainV2.ValidationStatus",
+                  name: "validationStatus",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "validationRequestId",
+                  type: "bytes32",
+                },
+              ],
+              internalType: "struct PharmaLinkSupplyChainV2.Medicine",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+          ],
+          name: "getOrder",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "medicineId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "quantity",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "requester",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "supplier",
+                  type: "address",
+                },
+                {
+                  internalType: "enum PharmaLinkSupplyChainV2.OrderStatus",
+                  name: "status",
+                  type: "uint8",
+                },
+                {
+                  internalType: "enum PharmaLinkSupplyChainV2.ValidationStatus",
+                  name: "validationStatus",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "validationRequestId",
+                  type: "bytes32",
+                },
+              ],
+              internalType: "struct PharmaLinkSupplyChainV2.Order",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+          ],
+          name: "getOrdersByDistributor",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "pharmacy",
+              type: "address",
+            },
+          ],
+          name: "getOrdersByPharmacy",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+          ],
+          name: "getTrackingHistory",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "recordedBy",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "location",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "temperature",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "humidity",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "remarks",
+                  type: "string",
+                },
+                {
+                  internalType: "enum PharmaLinkSupplyChainV2.Status",
+                  name: "status",
+                  type: "uint8",
+                },
+              ],
+              internalType: "struct PharmaLinkSupplyChainV2.TrackingEvent[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getValidationConfig",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "validatorContract",
+                  type: "address",
+                },
+                {
+                  internalType: "bool",
+                  name: "requireMedicineValidation",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "requireOrderValidation",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "requireTemperatureValidation",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct PharmaLinkSupplyChainV2.ValidationConfig",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "manufacturerInventory",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+          ],
+          name: "markAsSold",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "medicineCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "medicines",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "batchNumber",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "metadataURI",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "producerName",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "expirationDate",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "manufacturer",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "pharmacy",
+              type: "address",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.Status",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.ValidationStatus",
+              name: "validationStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "bytes32",
+              name: "validationRequestId",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+          ],
+          name: "onMedicineValidationResult",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "requestId",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "orderId",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+          ],
+          name: "onOrderValidationResult",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "orderCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "orders",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "quantity",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "requester",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "supplier",
+              type: "address",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.OrderStatus",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.ValidationStatus",
+              name: "validationStatus",
+              type: "uint8",
+            },
+            {
+              internalType: "bytes32",
+              name: "validationRequestId",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "pharmacyOrders",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "role",
+              type: "string",
+            },
+          ],
+          name: "revokeAuthorization",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bool",
+              name: "requireMedicine",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireOrder",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireTemperature",
+              type: "bool",
+            },
+          ],
+          name: "setValidationRequirements",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "validatorAddress",
+              type: "address",
+            },
+          ],
+          name: "setValidatorContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "distributor",
+              type: "address",
+            },
+          ],
+          name: "transferToDistributor",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "medicineId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "pharmacy",
+              type: "address",
+            },
+          ],
+          name: "transferToPharmacy",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "orderId",
+              type: "uint256",
+            },
+            {
+              internalType: "enum PharmaLinkSupplyChainV2.OrderStatus",
+              name: "newStatus",
+              type: "uint8",
+            },
+          ],
+          name: "updateOrderStatus",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "validationConfig",
+          outputs: [
+            {
+              internalType: "address",
+              name: "validatorContract",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "requireMedicineValidation",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireOrderValidation",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "requireTemperatureValidation",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "validationRequestToMedicineId",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "validationRequestToOrderId",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        owner: "@openzeppelin/contracts/access/Ownable.sol",
+        renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+        transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+      },
+      deployedOnBlock: 11,
     },
   },
 } as const;
